@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "PowerPerfApp (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "PowerPerfApp (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0-windows10.0.19041.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+    <Platforms>AnyCPU;x64;x86;ARM64</Platforms>
+    <RootNamespace>PowerPerfApp.Tests</RootNamespace>
+  </PropertyGroup>
+
+  <!--
+    Compile the service directly into the test assembly instead of referencing the
+    WinUI app project. PowerPerfService.cs has no WinUI/MSIX dependencies — only
+    PerformanceCounter, System.Management and Win32 P/Invokes — so linking it keeps
+    the test project a plain, fast-to-restore .NET test assembly.
+  -->
+  <ItemGroup>
+    <Compile Include="..\..\src\PowerPerfApp\PowerPerfService.cs" Link="PowerPerfService.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Diagnostics.PerformanceCounter" Version="9.0.5" />
+    <PackageReference Include="System.Management" Version="9.0.5" />
+
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.6.0" />
+    <PackageReference Include="xunit.v3" Version="3.2.2" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="3.1.5" />
+  </ItemGroup>
+
+</Project>
